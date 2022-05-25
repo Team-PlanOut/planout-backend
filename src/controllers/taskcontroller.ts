@@ -1,20 +1,20 @@
-const taskmodel = require("../models/tasks");
+const taskModel = require("../models/tasks");
 
 module.exports = {
     async getTasks(req, res)  {
-        const allTasks = await taskmodel.getAllTasks();
+        const allTasks = await taskModel.getAllTasks();
         res.send(allTasks);
     },
 
     async getTaskById(req, res){
         const id = req.params.id;
-        const specifiedTask = await taskmodel.getTaskById(id);
+        const specifiedTask = await taskModel.getTaskById(id);
         res.send(specifiedTask);
     },
 
     async getTaskbyName(req, res) {
         const taskName = req.params.name;
-        const task = await taskmodel.getByTaskName(taskName);
+        const task = await taskModel.getByTaskName(taskName);
         res.send(task);
     },
 
@@ -32,15 +32,15 @@ module.exports = {
             cost: cost
         }
         if (id) {
-            await taskmodel.updateTask(id, taskObj)
+            await taskModel.updateTask(id, taskObj)
         } else {
-            await taskmodel.createTask(taskObj);
+            await taskModel.createTask(taskObj);
         }
 
     },
 
     async deleteTask(req, res){
         const id = req.params.id;
-        await taskmodel.deleteTask(id);
+        await taskModel.deleteTask(id);
     }
 }
