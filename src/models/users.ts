@@ -2,7 +2,7 @@ const knex = require("../knex");
 
 const usersTable = "users";
 
-const getAll = () => {
+const getAllUsers = () => {
     return knex
     .select({
         id: "userId",
@@ -12,7 +12,7 @@ const getAll = () => {
     .from(usersTable)
 };
 
-const getById = (id: Number) => {
+const getUsersById = (id: Number) => {
     return knex
     .select({
         id: "userId",
@@ -24,7 +24,7 @@ const getById = (id: Number) => {
     .first()
 };
 
-const getByUserName = (username: String) => {
+const getUsersByUserName = (username: String) => {
     return knex
     .select({
         id: "userId",
@@ -59,4 +59,4 @@ const deleteUser = (id: Number) => {
     .del()
 };
 
-module.exports = {getAll, getById, getByUserName, createUser, updateUser, deleteUser};
+module.exports = {getAllUsers, getUsersById, getUsersByUserName, createUser, updateUser, deleteUser};
