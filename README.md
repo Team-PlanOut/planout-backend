@@ -1,6 +1,6 @@
 # Getting started
 
-### will fix later, this is just for development
+### Commands for development
 
 - yarn dev - starts express locally
 - yarn build - builds backend into js files and put them into dist directory
