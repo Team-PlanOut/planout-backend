@@ -3,12 +3,12 @@
  * @returns { Promise<void> }
  */
 exports.up = async function (knex) {
-  await knex.schema.createTable("users", (table) => {
+  await knex.schema.createTable("events", (table) => {
     table.increments("id").primary();
-    table.string("email").unique().notNullable();
-    table.string("first_name").notNullable();
-    table.string("last_name").notNullable();
-    table.integer("points");
+    table.foreign("user_id", ["user.id"]);
+    table.string("event_name").notNullable();
+    table.date("date").notNullable();
+    table.integer("budget");
     table.timestamp("created_at").defaultTo(knex.fn.now());
     table.timestamp("updated_at").defaultTo(knex.fn.now());
   });
@@ -19,5 +19,5 @@ exports.up = async function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = async function (knex) {
-  await knex.schema.dropTable("users");
+  await knex.schema.dropTable("events");
 };

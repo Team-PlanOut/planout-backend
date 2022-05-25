@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "knex": "knex migrate:latest"
   },
   "dependencies": {
     "@types/node": "^17.0.35",

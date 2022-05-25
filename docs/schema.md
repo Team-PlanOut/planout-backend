@@ -1,6 +1,7 @@
 # Schema Design
 
 `pk` = Primary Key
+`fk` = Foreign Key
 `ref: >` = Many to one
 `ref: <` = One to many
 `ref: -` = One to one
@@ -26,6 +27,8 @@ Table Tasks {
   status boolean [not null]
   points int
   event_id [not null, fk]
+  user_id [fk]
+  cost int
 
 }
 ```
@@ -35,9 +38,11 @@ Table Tasks {
 ```
 Table Events {
   id id [pk]
-  customer_id id [ref: > customer.id, not null]
-  date_placed date [not null]
-  date_shipped date
+  event_name varchar(64) [not null] 
+  date date [not null]
+  budget int 
+  member [fk, not null]
+  host [fk, not null]
 }
 ```
 
