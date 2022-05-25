@@ -1,12 +1,14 @@
 const knex = require("../knex");
 
-const usersTable = "users";
+const usersTable = "Users";
 
 const getAllUsers = () => {
     return knex
     .select({
-        id: "userId",
-        name: "name",
+        id: "id",
+        email: "email",
+        first_name: "first_name",
+        last_name: "last_name",
         points: "points"
     })
     .from(usersTable)
@@ -15,8 +17,10 @@ const getAllUsers = () => {
 const getUsersById = (id: Number) => {
     return knex
     .select({
-        id: "userId",
-        name: "name",
+        id: "id",
+        email: "email",
+        first_name: "first_name",
+        last_name: "last_name",
         points: "points"
     })
     .from(usersTable)
@@ -27,8 +31,10 @@ const getUsersById = (id: Number) => {
 const getUsersByUserName = (username: String) => {
     return knex
     .select({
-        id: "userId",
-        name: "name",
+        id: "id",
+        email: "email",
+        first_name: "first_name",
+        last_name: "last_name",
         points: "points"
     })
     .from(usersTable)
@@ -37,11 +43,11 @@ const getUsersByUserName = (username: String) => {
 };
 
 const createUser = (user: Object) => {
-    return knex.insert(user).into("users").catch(console.error());
+    return knex.insert(user).into("Users").catch(console.error());
 };
 
 const updateUser = (id: Number, updatedInfo: Object) => {
-    return knex("users")
+    return knex("Users")
     .update(updatedInfo)
     .where({"id": id})
     .catch(console.error())
@@ -50,8 +56,10 @@ const updateUser = (id: Number, updatedInfo: Object) => {
 const deleteUser = (id: Number) => {
     return knex
     .select({
-        id: "userId",
-        name: "name",
+        id: "id",
+        email: "email",
+        first_name: "first_name",
+        last_name: "last_name",
         points: "points"
     })
     .from(usersTable)

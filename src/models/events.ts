@@ -1,16 +1,16 @@
 
 
-const eventsTable = "events";
+const eventsTable = "Events";
 
 const getAllEvents = () => {
     return knex
     .select({
-        id: "eventId",
-        name: "eventName",
+        id: "id",
+        name: "event_name",
         date: "date",
         budget: "budget",
-        users: ("users"),
-        host: "hostID"
+        members: "members",
+        host: "host"
     })
     .from(eventsTable)
 };
@@ -18,12 +18,12 @@ const getAllEvents = () => {
 const getEventById = (id: Number) => {
     return knex
     .select({
-        id: "eventId",
-        name: "eventName",
+        id: "id",
+        name: "event_name",
         date: "date",
         budget: "budget",
-        users: ("users"),
-        host: "hostID"
+        members: "members",
+        host: "host"
     })
     .from(eventsTable)
     .where({id: id})
@@ -33,12 +33,12 @@ const getEventById = (id: Number) => {
 const getByEventName = (eventname: String) => {
     return knex
     .select({
-        id: "eventId",
-        name: "eventName",
+        id: "id",
+        name: "event_name",
         date: "date",
         budget: "budget",
-        users: ("users"),
-        host: "hostID"
+        members: "members",
+        host: "host"
     })
     .from(eventsTable)
     .where({name: eventname})
@@ -46,11 +46,11 @@ const getByEventName = (eventname: String) => {
 };
 
 const createEvent = (event: Object) => {
-    return knex.insert(event).into("events").catch(console.error());
+    return knex.insert(event).into("Events").catch(console.error());
 };
 
 const updateEvent = (id: Number, updatedInfo: Object) => {
-    return knex("events")
+    return knex("Events")
     .update(updatedInfo)
     .where({"id": id})
     .catch(console.error())
@@ -59,9 +59,12 @@ const updateEvent = (id: Number, updatedInfo: Object) => {
 const deleteEvent = (id: Number) => {
     return knex
     .select({
-        id: "userId",
-        name: "name",
-        points: "points"
+        id: "id",
+        name: "event_name",
+        date: "date",
+        budget: "budget",
+        members: "members",
+        host: "host"
     })
     .from(eventsTable)
     .where({id: id})
