@@ -1,11 +1,20 @@
 import express from "express";
-import { rootHandler, helloHandler } from "./handlers";
+// import eventRoutes from "./routes/events";
+// import taskRoutes from "./routes/tasks";
+// import userRoutes from "./routes/users";
+
+const eventRoutes = require("./routes/events")
+const userRoutes = require("./routes/users")
+const taskRoutes = require("./routes/tasks")
 
 const app = express();
 const PORT = process.env.PORT || "8080";
 
-app.get("/", rootHandler);
-app.get("/hello/:name", helloHandler);
+app.use(express.json())
+
+app.use("/tasks", taskRoutes);
+app.use("/events", eventRoutes);
+app.use("/users", userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);

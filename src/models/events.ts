@@ -1,6 +1,11 @@
+export {};
+let knex = require("../knex");
+// import * as knex from "knex";
 
 
-const eventsTable = "Events";
+
+
+const eventsTable = "events";
 
 const getAllEvents = () => {
     return knex
@@ -9,8 +14,9 @@ const getAllEvents = () => {
         name: "event_name",
         date: "date",
         budget: "budget",
-        members: "members",
-        host: "host"
+        host: "host",
+        created_at: "created_at",
+        updated_at: "updated_at"
     })
     .from(eventsTable)
 };
@@ -22,8 +28,9 @@ const getEventById = (id: Number) => {
         name: "event_name",
         date: "date",
         budget: "budget",
-        members: "members",
-        host: "host"
+        host: "host",
+        created_at: "created_at",
+        updated_at: "updated_at"
     })
     .from(eventsTable)
     .where({id: id})
@@ -37,8 +44,9 @@ const getByEventName = (eventname: String) => {
         name: "event_name",
         date: "date",
         budget: "budget",
-        members: "members",
-        host: "host"
+        host: "host",
+        created_at: "created_at",
+        updated_at: "updated_at"
     })
     .from(eventsTable)
     .where({name: eventname})
@@ -46,11 +54,11 @@ const getByEventName = (eventname: String) => {
 };
 
 const createEvent = (event: Object) => {
-    return knex.insert(event).into("Events").catch(console.error());
+    return knex.insert(event).into("events").catch(console.error());
 };
 
 const updateEvent = (id: Number, updatedInfo: Object) => {
-    return knex("Events")
+    return knex("events")
     .update(updatedInfo)
     .where({"id": id})
     .catch(console.error())
@@ -63,12 +71,13 @@ const deleteEvent = (id: Number) => {
         name: "event_name",
         date: "date",
         budget: "budget",
-        members: "members",
-        host: "host"
+        host: "host",
+        created_at: "created_at",
+        updated_at: "updated_at"
     })
     .from(eventsTable)
     .where({id: id})
     .del()
 };
 
-module.exports = {getAllEvents, getEventById, getByEventName, createUser, updateUser, deleteUser};
+module.exports = {getAllEvents, getEventById, getByEventName, createEvent, updateEvent, deleteEvent};
