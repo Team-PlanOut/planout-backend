@@ -1,7 +1,4 @@
 import express from "express";
-// import eventRoutes from "./routes/events";
-// import taskRoutes from "./routes/tasks";
-// import userRoutes from "./routes/users";
 
 const eventRoutes = require("./routes/events")
 const userRoutes = require("./routes/users")
