@@ -1,6 +1,6 @@
+let knex = require("../knex");
 
-
-const tasksTable = "Tasks";
+const tasksTable = "tasks";
 
 const getAllTasks = () => {
     return knex
@@ -9,9 +9,11 @@ const getAllTasks = () => {
         description: "description",
         status: "status",
         points: "points",
-        event: "eventID",
-        users: "userID",
-        cost: "cost"
+        event_id: "event_id",
+        user_id: "user_id",
+        cost: "cost",
+        created_at: "created_at",
+        updated_at: "updated_at"
     })
     .from(tasksTable)
 };
@@ -25,7 +27,9 @@ const getTaskById = (id: Number) => {
         points: "points",
         event: "event_id",
         users: "user_id",
-        cost: "cost"
+        cost: "cost",
+        created_at: "created_at",
+        updated_at: "updated_at"
     })
     .from(tasksTable)
     .where({id: id})
@@ -41,7 +45,9 @@ const getByTaskName = (taskname: String) => {
         points: "points",
         event: "event_id",
         users: "user_id",
-        cost: "cost"
+        cost: "cost",
+        created_at: "created_at",
+        updated_at: "updated_at"
     })
     .from(tasksTable)
     .where({name: taskname})
@@ -53,7 +59,7 @@ const createTask = (task: Object) => {
 };
 
 const updateTask = (id: Number, updatedInfo: Object) => {
-    return knex("Tasks")
+    return knex("tasks")
     .update(updatedInfo)
     .where({"id": id})
     .catch(console.error())
@@ -68,11 +74,13 @@ const deleteTask = (id: Number) => {
         points: "points",
         event: "event_id",
         users: "user_id",
-        cost: "cost"
+        cost: "cost",
+        created_at: "created_at",
+        updated_at: "updated_at"
     })
-    .from(eventsTable)
+    .from(tasksTable)
     .where({id: id})
     .del()
 };
 
-module.exports = {getAllEvents, getEventById, getByEventName, createUser, updateUser, deleteUser};
+module.exports = {getAllTasks, getTaskById, getByTaskName, createTask, updateTask, deleteTask};

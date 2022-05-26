@@ -1,26 +1,27 @@
 const eventModel = require("../models/events");
+import {Request, Response} from 'express';
 
 module.exports = {
-    async getEvents(req, res)  {
+    async getAllEvents(req: Request, res: Response)  {
         const allEvents = await eventModel.getAllEvents();
         res.send(allEvents);
     },
 
-    async getEventById(req, res){
+    async getEventById(req: Request, res: Response){
         const id = req.params.id;
         const specifiedEvent = await eventModel.getEventById(id);
         res.send(specifiedEvent);
     },
 
-    async getEventbyName(req, res) {
+    async getEventbyName(req: Request, res: Response) {
         const eventName = req.params.name;
         const event = await eventModel.getByEventName(eventName);
         res.send(event);
     },
 
-    async saveEvent(req, res) {
+    async saveEvent(req: Request, res: Response) {
 
-        const { id, name, date, budget, members, host} = req.body;
+        const { id, name, date, budget, members, host, created_at, updated_at } = req.body;
 
         const eventObj = {
             id: id,
@@ -28,7 +29,9 @@ module.exports = {
             date: date,
             budget: budget,
             members: members,
-            host: host
+            host: host,
+            created_at: created_at,
+            updated_at: updated_at
         }
         if (id) {
             await eventModel.updateEvent(id, eventObj)
@@ -38,7 +41,7 @@ module.exports = {
 
     },
 
-    async deleteEvent(req, res){
+    async deleteEvent(req: Request, res: Response){
         const id = req.params.id;
         await eventModel.deleteEvent(id);
     }

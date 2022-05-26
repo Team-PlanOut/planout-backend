@@ -1,26 +1,27 @@
 const taskModel = require("../models/tasks");
+import {Request, Response} from 'express';
 
 module.exports = {
-    async getTasks(req, res)  {
+    async getAllTasks(req: Request, res: Response)  {
         const allTasks = await taskModel.getAllTasks();
         res.send(allTasks);
     },
 
-    async getTaskById(req, res){
+    async getTasksById(req: Request, res: Response){
         const id = req.params.id;
         const specifiedTask = await taskModel.getTaskById(id);
         res.send(specifiedTask);
     },
 
-    async getTaskbyName(req, res) {
+    async getTaskbyName(req: Request, res: Response) {
         const taskName = req.params.name;
         const task = await taskModel.getByTaskName(taskName);
         res.send(task);
     },
 
-    async saveTask(req, res) {
+    async saveTask(req: Request, res: Response) {
 
-        const { id, description, status, points, event, users, cost} = req.body;
+        const { id, description, status, points, event, users, cost, created_at, updated_at} = req.body;
 
         const taskObj = {
             id: id,
@@ -29,7 +30,9 @@ module.exports = {
             points: points,
             event: event,
             users: users,
-            cost: cost
+            cost: cost,
+            created_at: created_at,
+            updated_at: updated_at
         }
         if (id) {
             await taskModel.updateTask(id, taskObj)
@@ -39,7 +42,7 @@ module.exports = {
 
     },
 
-    async deleteTask(req, res){
+    async deleteTask(req: Request, res: Response){
         const id = req.params.id;
         await taskModel.deleteTask(id);
     }
