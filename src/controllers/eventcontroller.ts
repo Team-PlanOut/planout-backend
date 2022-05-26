@@ -20,15 +20,14 @@ module.exports = {
   },
 
   async saveEvent(req: Request, res: Response) {
-    const { id, name, date, budget, members, host, created_at, updated_at } =
+    const { id, event_name, date, budget, host, created_at, updated_at } =
       req.body;
 
     const eventObj = {
       id: id,
-      name: name,
+      event_name: event_name,
       date: date,
       budget: budget,
-      members: members,
       host: host,
       created_at: created_at,
       updated_at: updated_at,
@@ -38,10 +37,12 @@ module.exports = {
     } else {
       await eventModel.createEvent(eventObj);
     }
+    res.status(200).send(eventObj);
   },
 
   async deleteEvent(req: Request, res: Response) {
     const id = req.params.id;
     await eventModel.deleteEvent(id);
+    res.status(200);
   },
 };

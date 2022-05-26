@@ -25,8 +25,8 @@ module.exports = {
       description,
       status,
       points,
-      event,
-      users,
+      event_id,
+      user_id,
       cost,
       created_at,
       updated_at,
@@ -37,8 +37,8 @@ module.exports = {
       description: description,
       status: status,
       points: points,
-      event: event,
-      users: users,
+      event_id: event_id,
+      user_id: user_id,
       cost: cost,
       created_at: created_at,
       updated_at: updated_at,
@@ -48,10 +48,12 @@ module.exports = {
     } else {
       await taskModel.createTask(taskObj);
     }
+    res.status(200).send(taskObj)
   },
 
   async deleteTask(req: Request, res: Response) {
     const id = req.params.id;
     await taskModel.deleteTask(id);
+    res.status(200);
   },
 };
