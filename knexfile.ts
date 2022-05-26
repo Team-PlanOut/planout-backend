@@ -1,5 +1,7 @@
 import type { Knex } from "knex";
-
+require("dotenv").config({
+  path: "./.env.local",
+});
 // Update with your config settings.
 
 const config: { [key: string]: Knex.Config } = {
