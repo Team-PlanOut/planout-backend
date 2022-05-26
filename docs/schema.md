@@ -15,6 +15,7 @@ Table Users {
   first_name varchar(32) [not null]
   last_name varchar(32) [not null]
   points int
+  host [fk]
 }
 ```
 
@@ -27,7 +28,7 @@ Table Tasks {
   status boolean [not null]
   points int
   event_id [not null, fk]
-  user_id [fk]
+  user [fk]
   cost int
 
 }
