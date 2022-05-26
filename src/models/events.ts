@@ -1,83 +1,86 @@
 export {};
 let knex = require("../knex");
-// import * as knex from "knex";
-
-
-
 
 const eventsTable = "events";
 
 const getAllEvents = () => {
-    return knex
+  return knex
     .select({
-        id: "id",
-        name: "event_name",
-        date: "date",
-        budget: "budget",
-        host: "host",
-        created_at: "created_at",
-        updated_at: "updated_at"
+      id: "id",
+      name: "event_name",
+      date: "date",
+      budget: "budget",
+      host: "host",
+      created_at: "created_at",
+      updated_at: "updated_at",
     })
-    .from(eventsTable)
+    .from(eventsTable);
 };
 
 const getEventById = (id: Number) => {
-    return knex
+  return knex
     .select({
-        id: "id",
-        name: "event_name",
-        date: "date",
-        budget: "budget",
-        host: "host",
-        created_at: "created_at",
-        updated_at: "updated_at"
+      id: "id",
+      name: "event_name",
+      date: "date",
+      budget: "budget",
+      host: "host",
+      created_at: "created_at",
+      updated_at: "updated_at",
     })
     .from(eventsTable)
-    .where({id: id})
-    .first()
+    .where({ id: id })
+    .first();
 };
 
-const getByEventName = (eventname: String) => {
-    return knex
+const getByEventName = (eventName: String) => {
+  return knex
     .select({
-        id: "id",
-        name: "event_name",
-        date: "date",
-        budget: "budget",
-        host: "host",
-        created_at: "created_at",
-        updated_at: "updated_at"
+      id: "id",
+      name: "event_name",
+      date: "date",
+      budget: "budget",
+      host: "host",
+      created_at: "created_at",
+      updated_at: "updated_at",
     })
     .from(eventsTable)
-    .where({name: eventname})
-    .first()
+    .where({ name: eventName })
+    .first();
 };
 
 const createEvent = (event: Object) => {
-    return knex.insert(event).into("events").catch(console.error());
+  return knex.insert(event).into("events").catch(console.error());
 };
 
 const updateEvent = (id: Number, updatedInfo: Object) => {
-    return knex("events")
+  return knex("events")
     .update(updatedInfo)
-    .where({"id": id})
-    .catch(console.error())
+    .where({ id: id })
+    .catch(console.error());
 };
 
 const deleteEvent = (id: Number) => {
-    return knex
+  return knex
     .select({
-        id: "id",
-        name: "event_name",
-        date: "date",
-        budget: "budget",
-        host: "host",
-        created_at: "created_at",
-        updated_at: "updated_at"
+      id: "id",
+      name: "event_name",
+      date: "date",
+      budget: "budget",
+      host: "host",
+      created_at: "created_at",
+      updated_at: "updated_at",
     })
     .from(eventsTable)
-    .where({id: id})
-    .del()
+    .where({ id: id })
+    .del();
 };
 
-module.exports = {getAllEvents, getEventById, getByEventName, createEvent, updateEvent, deleteEvent};
+module.exports = {
+  getAllEvents,
+  getEventById,
+  getByEventName,
+  createEvent,
+  updateEvent,
+  deleteEvent,
+};
