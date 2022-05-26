@@ -37,10 +37,12 @@ module.exports = {
     } else {
       await userModel.createUser(userObj);
     }
+    res.status(200).send(userObj);
   },
 
   async deleteUser(req: Request, res: Response) {
     const id = req.params.id;
     await userModel.deleteUser(id);
+    res.status(200);
   },
 };
