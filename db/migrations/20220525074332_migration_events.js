@@ -5,7 +5,7 @@
 exports.up = async function (knex) {
   await knex.schema.createTable("events", (table) => {
     table.increments("id").primary();
-    table.foreign("user_id", ["user.id"]);
+    table.integer("host").references("id").inTable("users");
     table.string("event_name").notNullable();
     table.date("date").notNullable();
     table.integer("budget");
