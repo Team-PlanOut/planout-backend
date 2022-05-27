@@ -66,6 +66,27 @@ const getTasksByEventId = (id: Number) => {
     .first();
 };
 
+const getTasksByUserId = (id: Number) => {
+  return knex(tasksTable)
+  .join('users', 'tasks.user_id', '=', 'users.id')
+  .join('events', 'events.id', '=', 'tasks.event_id')
+  .select({
+    id: 'tasks.id',
+    description: 'tasks.description',
+    status: 'tasks.status',
+    points: 'tasks.points',
+    eventId: 'tasks.event_id',
+    userId: 'users.id',
+    userFirstName: 'users.first_name',
+    userLastName: 'users.last_name',
+    cost: 'tasks.cost',
+    createdAt: 'tasks.created_at',
+    updatedAt: 'tasks.updated_at',
+  })
+    .where("tasks.user_id", id)
+    .first();
+};
+
 
 const getByTaskName = (taskname: String) => {
   return knex(tasksTable)
@@ -126,5 +147,6 @@ module.exports = {
   createTask,
   updateTask,
   deleteTask,
-  getTasksByEventId
+  getTasksByEventId,
+  getTasksByUserId
 };
