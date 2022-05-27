@@ -43,6 +43,6 @@ module.exports = {
   async deleteEvent(req: Request, res: Response) {
     const id = req.params.id;
     await eventModel.deleteEvent(id);
-    res.status(200);
+    res.status(200).send();
   },
 };

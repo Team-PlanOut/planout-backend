@@ -1,51 +1,65 @@
+import { json } from "stream/consumers";
+
 export {};
 let knex = require("../knex");
 
 const eventsTable = "events";
+const usersTable = "users";
 
 const getAllEvents = () => {
-  return knex
+  return knex("events")
+  .join("users", "events.host", "=", "users.id")
     .select({
-      id: "id",
-      name: "event_name",
-      date: "date",
-      budget: "budget",
-      host: "host",
-      created_at: "created_at",
-      updated_at: "updated_at",
+      id: "events.id",
+      name: "events.event_name",
+      date: "events.date",
+      budget: "events.budget",
+      hostId: "users.id",
+      hostFirstName: "users.first_name", 
+      hostLastName: "users.last_name",
+      created_at: "events.created_at",
+      updated_at: "events.updated_at",
     })
-    .from(eventsTable);
 };
 
+
+
 const getEventById = (id: Number) => {
-  return knex
+  return knex("events")
+  .join("users", "events.host", "=", "users.id")
     .select({
-      id: "id",
-      name: "event_name",
-      date: "date",
-      budget: "budget",
-      host: "host",
-      created_at: "created_at",
-      updated_at: "updated_at",
+      id: "events.id",
+      name: "events.event_name",
+      date: "events.date",
+      budget: "events.budget",
+      hostId: "users.id",
+      hostFirstName: "users.first_name", 
+      hostLastName: "users.last_name",
+      created_at: "events.created_at",
+      updated_at: "events.updated_at",
     })
-    .from(eventsTable)
-    .where({ id: id })
+    // .from(eventsTable)
+    .where("events.id", id)
     .first();
 };
 
+
 const getByEventName = (eventName: String) => {
-  return knex
+  return knex("events")
+  .join("users", "events.host", "=", "users.id")
     .select({
-      id: "id",
-      name: "event_name",
-      date: "date",
-      budget: "budget",
-      host: "host",
-      created_at: "created_at",
-      updated_at: "updated_at",
+      id: "events.id",
+      name: "events.event_name",
+      date: "events.date",
+      budget: "events.budget",
+      hostId: "users.id",
+      hostFirstName: "users.first_name", 
+      hostLastName: "users.last_name",
+      created_at: "events.created_at",
+      updated_at: "events.updated_at",
     })
-    .from(eventsTable)
-    .where({ name: eventName })
+    // .from(eventsTable)
+    .where("events.name", eventName)
     .first();
 };
 
@@ -61,17 +75,8 @@ const updateEvent = (id: Number, updatedInfo: Object) => {
 };
 
 const deleteEvent = (id: Number) => {
-  return knex
-    .select({
-      id: "id",
-      name: "event_name",
-      date: "date",
-      budget: "budget",
-      host: "host",
-      created_at: "created_at",
-      updated_at: "updated_at",
-    })
-    .from(eventsTable)
+  return knex('events')//event table 
+    //.from(eventsTable)
     .where({ id: id })
     .del();
 };
