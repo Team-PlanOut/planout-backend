@@ -38,7 +38,7 @@ module.exports = {
     res.status(200).send(eventObj);
   },
 
-  async deleteEventUser(req: Request, res: Response) {
+  async deleteUserEvent(req: Request, res: Response) {
     const id = req.params.id;
     await userEventModel.deleteEventUser(id);
     res.status(200).send();
