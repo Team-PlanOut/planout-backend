@@ -2,13 +2,14 @@ const express = require("express");
 const eventRoutes = require("./routes/events");
 const userRoutes = require("./routes/users");
 const taskRoutes = require("./routes/tasks");
-const middleware = require("./middleware");
+const middleware = require("./middleware/index");
+const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || "8080";
 
 app.use(express.json());
-
+app.use(cors());
 app.use("/tasks", taskRoutes);
 app.use("/events", eventRoutes);
 app.use("/users", userRoutes);

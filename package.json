@@ -5,7 +5,7 @@
   "repository": "git@github.com:cc-senior-project/planout-backend.git",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/server.ts",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js"
   },
