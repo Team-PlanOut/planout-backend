@@ -1,5 +1,5 @@
-const userEventModel = require("../models/event_users");
-import { Request, Response } from "express";
+const userEventModel = require('../models/event_users');
+import { Request, Response } from 'express';
 
 module.exports = {
   async getAll(req: Request, res: Response) {
@@ -7,7 +7,7 @@ module.exports = {
     res.send(allUsersEvents);
   },
 
-  async getByEventId(req: Request, res: Response) {
+  async getUsersByEventId(req: Request, res: Response) {
     const id = req.params.id;
     const specifiedEvent = await userEventModel.getByEventId(id);
     res.send(specifiedEvent);
@@ -20,8 +20,7 @@ module.exports = {
   },
 
   async saveUserEvent(req: Request, res: Response) {
-    const { id, event_id, user_id, created_at, updated_at } =
-      req.body;
+    const { id, event_id, user_id, created_at, updated_at } = req.body;
 
     const eventObj = {
       id: id,

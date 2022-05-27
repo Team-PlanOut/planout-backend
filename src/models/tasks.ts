@@ -63,7 +63,6 @@ const getTasksByEventId = (id: Number) => {
     updatedAt: 'tasks.updated_at',
   })
     .where("tasks.event_id", id)
-    .first();
 };
 
 const getTasksByUserId = (id: Number) => {
