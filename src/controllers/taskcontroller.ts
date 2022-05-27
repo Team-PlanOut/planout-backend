@@ -13,6 +13,13 @@ module.exports = {
     res.send(specifiedTask);
   },
 
+  async getTasksByEvent(req: Request, res: Response) {
+    const id = req.params.id;
+    const specifiedTask = await taskModel.getTasksByEventId(id);
+    res.send(specifiedTask);
+  },
+
+
   async getTaskbyName(req: Request, res: Response) {
     const taskName = req.params.name;
     const task = await taskModel.getByTaskName(taskName);
