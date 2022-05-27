@@ -54,6 +54,6 @@ module.exports = {
   async deleteTask(req: Request, res: Response) {
     const id = req.params.id;
     await taskModel.deleteTask(id);
-    res.status(200);
+    res.status(200).send("done");
   },
 };
