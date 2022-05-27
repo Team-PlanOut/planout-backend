@@ -19,6 +19,12 @@ module.exports = {
     res.send(event);
   },
 
+  async getEventByHost(req: Request, res: Response) {
+    const hostId = req.params.id;
+    const event = await eventModel.getByHostId(hostId);
+    res.send(event);
+  },
+
   async saveEvent(req: Request, res: Response) {
     const { id, event_name, date, budget, host, created_at, updated_at } =
       req.body;
@@ -43,6 +49,6 @@ module.exports = {
   async deleteEvent(req: Request, res: Response) {
     const id = req.params.id;
     await eventModel.deleteEvent(id);
-    res.status(200);
+    res.status(200).send();
   },
 };
