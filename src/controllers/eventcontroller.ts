@@ -19,6 +19,12 @@ module.exports = {
     res.send(event);
   },
 
+  async getEventByHost(req: Request, res: Response) {
+    const hostId = req.params.id;
+    const event = await eventModel.getByHostId(hostId);
+    res.send(event);
+  },
+
   async saveEvent(req: Request, res: Response) {
     const { id, event_name, date, budget, host, created_at, updated_at } =
       req.body;
