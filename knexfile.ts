@@ -1,12 +1,12 @@
 import type { Knex } from "knex";
+require("ts-node/register");
 require("dotenv").config({
   path: "./.env.local",
 });
-// Update with config settings.
 
 const config: { [key: string]: Knex.Config } = {
   development: {
-    client: "pg",
+    client: "postgresql",
     connection: process.env.DATABASE_URL || {
       // port: process.env.DB_PORT || 9000,
       database: process.env.DB_NAME,
@@ -24,35 +24,34 @@ const config: { [key: string]: Knex.Config } = {
   staging: {
     client: "postgresql",
     connection: {
-      database: "my_db",
-      user: "username",
-      password: "password"
+      database: process.env.DB_NAME,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: "knex_migrations"
-    }
+      tableName: "knex_migrations",
+    },
   },
 
   production: {
     client: "postgresql",
     connection: {
-      database: "my_db",
-      user: "username",
-      password: "password"
+      database: process.env.DB_NAME,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      tableName: "knex_migrations"
-    }
-  }
-
+      tableName: "knex_migrations",
+    },
+  },
 };
 
 module.exports = config;

@@ -1,13 +1,13 @@
 export {};
-let knex = require('../knex');
+let knex = require("../knex");
 
-const usersEventsTable = 'users_events';
+const usersEventsTable = "users_events";
 
 const getAll = () => {
   return knex
     .select({
-      event_id: 'event_id',
-      user_id: 'user_id',
+      event_id: "event_id",
+      user_id: "user_id",
     })
     .from(usersEventsTable);
 };
@@ -24,10 +24,10 @@ const getAll = () => {
 
 const getByEventId = (eventId: Number) => {
   return knex(usersEventsTable)
-    .join('users', 'users_events.user_id', '=', 'users.id')
-    .join('events', 'events.id', '=', 'users_events.event_id')
+    .join("users", "users_events.user_id", "=", "users.id")
+    .join("events", "events.id", "=", "users_events.event_id")
     .select({
-      eventId: 'events.id',
+      eventId: "events.id",
       // eventName: 'events.event_name',
       // id: 'users.id',
       // email: 'users.email',
@@ -37,7 +37,7 @@ const getByEventId = (eventId: Number) => {
       // createdAt: 'users.created_at',
       // updatedAt: 'users.updated_at',
     })
-    .where('users_events.event_id', eventId);
+    .where("users_events.event_id", eventId);
 };
 
 // const getTasksByEventId = (id: Number) => {
