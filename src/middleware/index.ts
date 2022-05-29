@@ -1,4 +1,4 @@
-const admin = require("../firebase-config/firebase.config");
+import admin from "../firebase-config/firebase.config";
 
 class Middleware {
   async decodeToken(req: any, res: any, next: any) {
