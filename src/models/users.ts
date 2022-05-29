@@ -1,5 +1,3 @@
-export {};
-
 let knex = require("../knex");
 
 const usersTable = "users";
@@ -18,7 +16,7 @@ const getAllUsers = () => {
     .from(usersTable);
 };
 
-const getUsersById = (id: Number) => {
+const getUsersById = (id: String) => {
   return knex
     .select({
       id: "id",
@@ -61,7 +59,7 @@ const updateUser = (id: Number, updatedInfo: Object) => {
     .catch(console.error());
 };
 
-const deleteUser = (id: Number) => {
+const deleteUser = (id: String) => {
   return knex
     .select({
       id: "id",
@@ -77,7 +75,7 @@ const deleteUser = (id: Number) => {
     .del();
 };
 
-module.exports = {
+export default {
   getAllUsers,
   getUsersById,
   getUsersByUserName,

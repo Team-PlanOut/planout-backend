@@ -1,7 +1,7 @@
-const userModel = require("../models/users");
+import userModel from "../models/users";
 import { Request, Response } from "express";
 
-module.exports = {
+export default {
   async getAllUsers(req: Request, res: Response) {
     const allUsers = await userModel.getAllUsers();
     res.send(allUsers);

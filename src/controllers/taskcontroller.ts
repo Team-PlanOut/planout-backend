@@ -1,7 +1,7 @@
 const taskModel = require("../models/tasks");
 import { Request, Response } from "express";
 
-module.exports = {
+export default {
   async getAllTasks(req: Request, res: Response) {
     const allTasks = await taskModel.getAllTasks();
     res.send(allTasks);
@@ -24,8 +24,6 @@ module.exports = {
     const specifiedTask = await taskModel.getTasksByUserId(id);
     res.send(specifiedTask);
   },
-
-
 
   async getTaskbyName(req: Request, res: Response) {
     const taskName = req.params.name;
@@ -62,7 +60,7 @@ module.exports = {
     } else {
       await taskModel.createTask(taskObj);
     }
-    res.status(200).send(taskObj)
+    res.status(200).send(taskObj);
   },
 
   async deleteTask(req: Request, res: Response) {

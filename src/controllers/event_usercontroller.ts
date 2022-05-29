@@ -1,7 +1,7 @@
-const userEventModel = require('../models/event_users');
-import { Request, Response } from 'express';
+const userEventModel = require("../models/event_users");
+import { Request, Response } from "express";
 
-module.exports = {
+export default {
   async getAll(req: Request, res: Response) {
     const allUsersEvents = await userEventModel.getAll();
     res.send(allUsersEvents);

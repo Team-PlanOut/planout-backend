@@ -19,4 +19,4 @@ class Middleware {
   }
 }
 
-module.exports = new Middleware();
+export default new Middleware();

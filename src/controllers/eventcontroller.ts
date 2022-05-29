@@ -1,7 +1,7 @@
 const eventModel = require("../models/events");
 import { Request, Response } from "express";
 
-module.exports = {
+export default {
   async getAllEvents(req: Request, res: Response) {
     const allEvents = await eventModel.getAllEvents();
     res.send(allEvents);
