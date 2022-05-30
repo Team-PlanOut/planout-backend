@@ -34,7 +34,7 @@ services:
     networks:
       - planout-net
     # The start up command (start express server)
-    command: ["/bin/sh", "-c", "npx knex migrate:latest; npx knex seed:run; yarn start"]
+    command: ["/bin/sh", "-c", "yarn install; yarn build; npx knex migrate:latest; npx knex seed:run; yarn start"]
     depends_on:
       - database
 # Networks allow containers to connect to eachother
