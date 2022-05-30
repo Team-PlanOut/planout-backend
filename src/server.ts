@@ -10,7 +10,7 @@ const userRoutes = require("./routes/users");
 const taskRoutes = require("./routes/tasks");
 const eventUserRoutes = require("./routes/event_users");
 
-function goAwayCors(req: any, res: any, next: any) {
+function solveCorsIssue(req: any, res: any, next: any) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
   res.header(
@@ -20,7 +20,7 @@ function goAwayCors(req: any, res: any, next: any) {
   next();
 }
 
-app.use(goAwayCors);
+app.use(solveCorsIssue);
 app.use(express.json());
 app.use(middleware.decodeToken);
 app.use(cors());
