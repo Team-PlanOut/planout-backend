@@ -1,3 +1,5 @@
+import { Request, Response } from "express";
+
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -10,7 +12,7 @@ const userRoutes = require("./routes/users");
 const taskRoutes = require("./routes/tasks");
 const eventUserRoutes = require("./routes/event_users");
 
-function solveCorsIssue(req: any, res: any, next: any) {
+function solveCorsIssue(req: Request, res: Response, next: any) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
   res.header(
