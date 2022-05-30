@@ -1,0 +1,50 @@
+services:
+  # 1. PG Database Service
+  database:
+    image: postgres:14.3
+    container_name: planout-db
+    # Map your host data to the container's data
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    # Set environment variables
+    env_file: ./.env
+    environment: # get DB environment from .env file
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    # Add to the container network
+    networks:
+      - planout-net
+    restart: unless-stopped
+  # 2. Backend API Service
+  backend:
+    image: node:14.17.3
+    container_name: planout-api
+    # Sets container's root directory
+    working_dir: /planout-backend
+    # Map project directory on host (source) to the container file system
+    volumes:
+      - type: bind
+        source: .
+        target: /planout-backend
+    # Map ports host:container
+    ports:
+      - 8080:8080
+    # Add it to the container network so it can access the DB container
+    networks:
+      - planout-net
+    # The start up command (start express server)
+    command: ["/bin/sh", "-c", "npx knex migrate:latest; npx knex seed:run; yarn start"]
+    depends_on:
+      - database
+# Networks allow containers to connect to eachother
+networks:
+  planout-net:
+    driver: "bridge"
+# Required. Declare volumnes
+volumes:
+  pgdata:
+
+
+
+
