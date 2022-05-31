@@ -4,31 +4,31 @@
  */
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
-  await knex("users_events").del();
-  await knex("tasks").del();
-  await knex("events").del();
-  await knex("users").del();
-  await knex("users").insert([
+  await knex('users_events').del();
+  await knex('tasks').del();
+  await knex('events').del();
+  await knex('users').del();
+  await knex('users').insert([
     {
-      id: 100,
-      first_name: "Ruprecht",
-      last_name: "Epstein",
+      id: 1,
+      first_name: 'Ruprecht',
+      last_name: 'Epstein',
       points: 0,
-      email: "1@ab.cd",
+      email: '1@ab.cd',
     },
     {
-      id: 200,
-      first_name: "Jeremy",
-      last_name: "Smith",
+      id: 2,
+      first_name: 'Jeremy',
+      last_name: 'Smith',
       points: 15,
-      email: "2@ab.cd",
+      email: '2@ab.cd',
     },
     {
-      id: 300,
-      first_name: "Abbaddon",
-      last_name: "the Despoiler",
+      id: 3,
+      first_name: 'Abbaddon',
+      last_name: 'the Despoiler',
       points: 666,
-      email: "3@ab.cd",
+      email: '3@ab.cd',
     },
   ]);
 };
