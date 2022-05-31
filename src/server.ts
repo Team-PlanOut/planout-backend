@@ -12,17 +12,17 @@ const userRoutes = require("./routes/users");
 const taskRoutes = require("./routes/tasks");
 const eventUserRoutes = require("./routes/event_users");
 
-function solveCorsIssue(req: Request, res: Response, next: any) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  next();
-}
+// function solveCorsIssue(req: Request, res: Response, next: any) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+//   );
+//   next();
+// }
 
-app.use(solveCorsIssue);
+// app.use(solveCorsIssue);
 app.use(express.json());
 app.use(middleware.decodeToken);
 app.use(cors());

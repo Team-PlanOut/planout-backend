@@ -1,6 +1,3 @@
-import { Request, Response } from "express";
-import { toNamespacedPath } from "path";
-
 const knex = require("../knex");
 const admin = require("../firebase-config/firebase.config");
 
@@ -13,7 +10,6 @@ class Middleware {
     try {
       const decodedVal = await admin.auth().verifyIdToken(token);
       const uid = decodedVal.uid;
-      // console.log("this is decodeToken", decodedVal);
       if (decodedVal) {
         req.user = decodedVal;
         const users = await knex
