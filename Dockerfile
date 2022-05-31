@@ -1,7 +1,7 @@
 FROM node:14.17.3 AS builder
 COPY . .
-# RUN yarn install
-# RUN yarn build
+RUN yarn install
+RUN yarn build
 
 FROM node:14-alpine
 WORKDIR .
