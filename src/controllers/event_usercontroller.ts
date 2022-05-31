@@ -13,7 +13,7 @@ module.exports = {
     res.send(specifiedEvent);
   },
 
-  async getByUserId(req: Request, res: Response) {
+  async getEventsByUserId(req: Request, res: Response) {
     const id = req.params.id;
     const specifiedEvent = await userEventModel.getByUserId(id);
     res.send(specifiedEvent);
