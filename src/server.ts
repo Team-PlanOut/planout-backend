@@ -24,12 +24,13 @@ function solveCorsIssue(req: Request, res: Response, next: any) {
 
 app.use(solveCorsIssue);
 app.use(express.json());
-app.use(middleware.decodeToken);
 app.use(cors());
+app.use(middleware.decodeToken);
 app.use("/tasks", taskRoutes);
 app.use("/events", eventRoutes);
 app.use("/users", userRoutes);
 app.use("/eventusers", eventUserRoutes);
+
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
