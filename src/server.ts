@@ -4,6 +4,8 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || "8080";
+const Stripe = require("stripe");
+const stripe = Stripe(/*STRIPE API KEY GOES HERE */)
 
 const middleware = require("./middleware/index");
 
