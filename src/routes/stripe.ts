@@ -3,7 +3,7 @@ import { getStripePayment, postStripePayment } from "../controllers/stripecontro
 
 const router = Router();
 
-router.get('/', getStripePayment);
+router.get('/', getStripePayment); 
 router.post('/create-checkout-session', postStripePayment);
 
 export default router;
