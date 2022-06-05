@@ -11,7 +11,8 @@ async getFriendsByUserId  (req: Request, res: Response){
     const myFriends = await friendsModel.getFriendsByUserId(id);
     res.send(myFriends);
 },
-async saveFriend(req: Request, res: Response) {
+async saveFriendship(req: Request, res: Response) {
+    const {user1_id, user2_id} =req.body;
 
 },
 
