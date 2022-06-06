@@ -11,7 +11,7 @@
       table.integer("event_id").references("id").inTable("events").onDelete('CASCADE');
       table.string("user_id").references("id").inTable("users");
       table.integer("cost");
-      table.date("datetime").notNullable(); //default date of event
+      table.date("datetime"); //default date of event
       table.timestamp("created_at").defaultTo(knex.fn.now());
       table.timestamp("updated_at").defaultTo(knex.fn.now());
     });
