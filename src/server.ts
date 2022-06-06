@@ -4,8 +4,8 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || "8080";
-// 
 
+const middleware = require("./middleware/index");
 
 const eventRoutes = require("./routes/events");
 const userRoutes = require("./routes/users");
@@ -26,13 +26,12 @@ function solveCorsIssue(req: Request, res: Response, next: any) {
 app.use(solveCorsIssue);
 app.use(express.json());
 app.use(cors());
-// app.use(middleware.decodeToken);
+app.use(middleware.decodeToken);
 app.use("/tasks", taskRoutes);
 app.use("/events", eventRoutes);
 app.use("/users", userRoutes);
 app.use("/eventusers", eventUserRoutes);
 app.use("/friends", friendRoutes);
-
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
