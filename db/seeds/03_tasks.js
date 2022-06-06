@@ -11,7 +11,7 @@ exports.seed = async function (knex) {
       status: "false",
       points: 100,
       event_id: 1,
-      user_id: 1,
+      user_id: "1a9d53c2",
       cost: 50000,
     },
     {
@@ -19,7 +19,7 @@ exports.seed = async function (knex) {
       status: "false",
       points: 100,
       event_id: 2,
-      user_id: 2,
+      user_id: "280f425a",
       cost: 5,
     },
     {
@@ -27,7 +27,7 @@ exports.seed = async function (knex) {
       status: "false",
       points: 500,
       event_id: 3,
-      user_id: 3,
+      user_id: "320b4650",
     },
   ]);
 };
