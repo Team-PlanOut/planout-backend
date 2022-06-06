@@ -82,8 +82,7 @@ const getTasksByUserId = (id: String) => {
       createdAt: "tasks.created_at",
       updatedAt: "tasks.updated_at",
     })
-    .where("tasks.user_id", id)
-    .first();
+    .where("tasks.user_id", id);
 };
 
 const getByTaskName = (taskname: String) => {
@@ -123,7 +122,7 @@ const updateTaskUser = (id: Number, updatedInfo: Object) => {
     .update(updatedInfo)
     .where({ id: id })
     .catch(console.error());
-}; //do we need this? need what?
+};
 
 const deleteTask = (id: Number) => {
   return knex(tasksTable).select("*").where({ id: id }).del();
