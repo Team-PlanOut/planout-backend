@@ -65,7 +65,7 @@ const getTasksByEventId = (id: Number) => {
     .where("tasks.event_id", id);
 };
 
-const getTasksByUserId = (id: Number) => {
+const getTasksByUserId = (id: String) => {
   return knex(tasksTable)
     .join("users", "tasks.user_id", "=", "users.id")
     .join("events", "events.id", "=", "tasks.event_id")
