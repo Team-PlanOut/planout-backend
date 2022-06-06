@@ -12,18 +12,19 @@ class Middleware {
       if (decodedVal) {
         req.user = decodedVal;
         const users = await knex
-          .select("email")
+          .select("id")
           .from("users")
-          .where("email", req.user.email);
-        const emails = users.map((user: any) => user.email);
-        if (emails.includes(req.user.email)) {
+          .where("id", req.user.uid);
+        const uidList = users.map((user: any) => user.uid);
+        if (uidList.includes(req.user.uid)) {
           return next();
         } else {
-          const names = req.user.name.split(" ");
+          const fullName = req.user.name.split(" ");
           const userInfo = {
-            first_name: names[0],
-            last_name: names[names.length - 1],
+            first_name: fullName[0],
+            last_name: fullName[fullName.length - 1],
             email: req.user.email,
+            id: req.user.uid
           };
           await knex.insert(userInfo).into("users");
           return next();

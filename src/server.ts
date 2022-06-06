@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || "8080";
+// 
 
 const middleware = require("./middleware/index");
 
@@ -11,6 +12,8 @@ const eventRoutes = require("./routes/events");
 const userRoutes = require("./routes/users");
 const taskRoutes = require("./routes/tasks");
 const eventUserRoutes = require("./routes/event_users");
+const stripeRoutes = require("./routes/stripe");
+const friendRoutes = require("./routes/friends");
 
 function solveCorsIssue(req: Request, res: Response, next: any) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -30,6 +33,8 @@ app.use("/tasks", taskRoutes);
 app.use("/events", eventRoutes);
 app.use("/users", userRoutes);
 app.use("/eventusers", eventUserRoutes);
+app.use("/stripe", stripeRoutes);
+app.use("/friends", friendRoutes);
 
 
 app.listen(PORT, () => {
