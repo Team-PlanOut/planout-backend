@@ -7,8 +7,6 @@ class Middleware {
 
     try {
       const decodedVal = await admin.auth().verifyIdToken(token);
-      const uid = decodedVal.uid;
-      console.log("this is decodeToken", decodedVal);
       if (decodedVal) {
         req.user = decodedVal;
         const users = await knex
@@ -37,5 +35,4 @@ class Middleware {
     }
   }
 }
-
 module.exports = new Middleware();
