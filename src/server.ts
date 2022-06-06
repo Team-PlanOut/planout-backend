@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-const middleware = require("./middleware/index");
+// const middleware = require("./middleware/index");
 
 const express = require("express");
 const cors = require("cors");
@@ -25,7 +25,7 @@ function solveCorsIssue(req: Request, res: Response, next: any) {
 app.use(solveCorsIssue);
 app.use(express.json());
 app.use(cors());
-app.use(middleware.decodeToken);
+// app.use(middleware.decodeToken);
 app.use("/tasks", taskRoutes);
 app.use("/events", eventRoutes);
 app.use("/users", userRoutes);
