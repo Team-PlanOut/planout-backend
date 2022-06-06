@@ -1,6 +1,6 @@
 
-const Stripe = require("stripe");
-const stripe = Stripe(/*STRIPE API KEY GOES HERE */)
+// const Stripe = require("stripe");
+// const stripe = Stripe(/*STRIPE API KEY GOES HERE */)
 
 // for the transfer of funds to the holder of the task //
 
