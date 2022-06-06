@@ -17,11 +17,11 @@ const addFriend = (newFriend: Object) => {
   return knex.insert(newFriend).into("friends").catch(console.error());
 };
 
-const deleteFriend = (id: string, exFriendId: string) => {
+const endFriendship = (id: string, friendId: string) => {
   return knex(friendsTable)
     .select("*")
-    .where({ id: id, exFriendId: "user2_id" })
+    .where({ user1_id: id, user2_id: friendId})
     .del();
 };
 
-module.exports = { getAllFriends, addFriend, deleteFriend };
+module.exports = { getAllFriends, addFriend, endFriendship };
