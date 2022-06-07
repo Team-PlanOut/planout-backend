@@ -83,7 +83,7 @@ const getTasksByUserId = (id: String) => {
       updatedAt: "tasks.updated_at",
     })
     .where("tasks.user_id", id)
-    .first();
+    // .first();
 };
 
 const getByTaskName = (taskname: String) => {
