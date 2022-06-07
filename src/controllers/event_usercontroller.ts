@@ -19,18 +19,38 @@ module.exports = {
     res.send(specifiedEvent);
   },
 
-  async saveUserEvent(req: Request, res: Response) {
-    const { id, event_id, user_id, created_at, updated_at } = req.body;
+  // async saveUserEvent(req: Request, res: Response) {
+  //   const { id, event_id, user_id, created_at, updated_at } = req.body;
 
+  //   const eventObj = {
+  //     id: id,
+  //     event_id: event_id,
+  //     user_id: user_id,
+  //     created_at: created_at,
+  //     updated_at: updated_at,
+  //   };
+  //   if (id) {
+  //     await userEventModel.updateEventUser(id, eventObj);
+  //   } else {
+  //     await userEventModel.createEventUser(eventObj);
+  //   }
+  //   res.status(200).send(eventObj);
+  // },
+
+  async saveUserEvent(req: Request, res: Response) {
+    const { event_id, user_id, created_at, updated_at } = req.body;
+    const userIds = await knex
+      .select("id")
+      .from("users")
+      .where("first_name", user_id);
     const eventObj = {
-      id: id,
       event_id: event_id,
-      user_id: user_id,
+      user_id: userIds[0].id,
       created_at: created_at,
       updated_at: updated_at,
     };
-    if (id) {
-      await userEventModel.updateEventUser(id, eventObj);
+    if (event_id) {
+      await userEventModel.updateEventUser(event_id, eventObj);
     } else {
       await userEventModel.createEventUser(eventObj);
     }
