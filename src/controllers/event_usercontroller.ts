@@ -1,5 +1,6 @@
-const userEventModel = require('../models/event_users');
-import { Request, Response } from 'express';
+const userEventModel = require("../models/event_users");
+import { Request, Response } from "express";
+const knex = require("../knex");
 
 module.exports = {
   async getAll(req: Request, res: Response) {
