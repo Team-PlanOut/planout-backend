@@ -94,9 +94,8 @@ const updateEvent = (id: Number, updatedInfo: Object) => {
 
 const deleteEvent = (id: Number) => {
   return (
-    knex("events") //event table
-      //.from(eventsTable)
-      .where({ id: id })
+    knex("events")
+      .where( "id", id )
       .del()
   );
 };
