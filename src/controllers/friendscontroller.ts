@@ -14,7 +14,7 @@ module.exports = {
     const friendship = { user1_id: userId, user2_id: friendId }
     await friendsModel.addFriend(friendship);
     // await friendsModel.addFriend(reverseFriendship);
-    res.status(200);
+    res.status(200).send();
   },
 
   async friendshipEnded(req: Request, res: Response) {
