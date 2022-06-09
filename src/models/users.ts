@@ -50,6 +50,22 @@ const getUsersByUserName = (username: String) => {
     .first();
 };
 
+const getUsersByFirstName = (text: String) => {
+  return knex
+    .select({
+      id: "id",
+      email: "email",
+      first_name: "first_name",
+      last_name: "last_name",
+      points: "points",
+      created_at: "created_at",
+      updated_at: "updated_at",
+    })
+    .from(usersTable)
+    .where({ first_name: text })
+    .first();
+}
+
 const createUser = (user: Object) => {
   return knex.insert(user).into("users").catch(console.error());
 };
@@ -80,6 +96,7 @@ const deleteUser = (id: Number) => {
 module.exports = {
   getAllUsers,
   getUsersById,
+  getUsersByFirstName,
   getUsersByUserName,
   createUser,
   updateUser,

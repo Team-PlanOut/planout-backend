@@ -5,17 +5,27 @@ module.exports = {
   async getAllUsers(req: Request, res: Response) {
     const allUsers = await userModel.getAllUsers();
     res.send(allUsers);
+    console.log(req.params);
   },
 
   async getUsersById(req: Request, res: Response) {
     const id = req.params.id;
-    const specifiedUser = await userModel.getUsersById(id);
+    let specifiedUser = await userModel.getUsersById(id);
+    if (specifiedUser === undefined){
+      specifiedUser = await userModel.getUsersByFirstName(id);
+    }
     res.send(specifiedUser);
   },
 
   async getUsersByUserName(req: Request, res: Response) {
     const userName = req.params.name;
     const user = await userModel.getUsersByUserName(userName);
+    res.send(user);
+  },
+
+  async getUsersByFirstName(req: Request, res: Response){
+    const firstName = req.params.first_name;
+    const user = await userModel.getUsersByText(firstName);
     res.send(user);
   },
 
