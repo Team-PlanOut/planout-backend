@@ -11,7 +11,7 @@ const { Server } = require('socket.io');
 const server = http.createServer(app);
 
 const io = new Server(server, {
-  cors: 'http://localhost:3000',
+  cors: 'https://planout-one.vercel.app/',
   methods: ['GET', 'POST', 'PUT'],
 });
 
