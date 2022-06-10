@@ -22,7 +22,8 @@ class Middleware {
             first_name: fullName[0],
             last_name: fullName[fullName.length - 1],
             email: req.user.email,
-            id: req.user.uid
+            id: req.user.uid,
+            photoUrl: req.user.photoURL,
           };
           await knex.insert(userInfo).into("users");
           return next();

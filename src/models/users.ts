@@ -11,6 +11,7 @@ const getAllUsers = () => {
       email: "email",
       first_name: "first_name",
       last_name: "last_name",
+      photoUrl: "photoUrl",
       points: "points",
       created_at: "created_at",
       updated_at: "updated_at",
@@ -25,6 +26,7 @@ const getUsersById = (id: Number) => {
       email: "email",
       first_name: "first_name",
       last_name: "last_name",
+      photoUrl: "photoUrl",
       points: "points",
       created_at: "created_at",
       updated_at: "updated_at",
@@ -41,6 +43,7 @@ const getUsersByUserName = (username: String) => {
       email: "email",
       first_name: "first_name",
       last_name: "last_name",
+      photoUrl: "photoUrl",
       points: "points",
       created_at: "created_at",
       updated_at: "updated_at",
@@ -57,6 +60,7 @@ const getUsersByFirstName = (text: String) => {
       email: "email",
       first_name: "first_name",
       last_name: "last_name",
+      photoUrl: "photoUrl",
       points: "points",
       created_at: "created_at",
       updated_at: "updated_at",
@@ -64,7 +68,7 @@ const getUsersByFirstName = (text: String) => {
     .from(usersTable)
     .where({ first_name: text })
     .first();
-}
+};
 
 const createUser = (user: Object) => {
   return knex.insert(user).into("users").catch(console.error());
@@ -84,6 +88,7 @@ const deleteUser = (id: Number) => {
       email: "email",
       first_name: "first_name",
       last_name: "last_name",
+      photoUrl: "photoUrl",
       points: "points",
       created_at: "created_at",
       updated_at: "updated_at",
