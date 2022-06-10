@@ -22,7 +22,11 @@ io.on('connection', (socket: any) => {
   });
   socket.on("eventCreated", (data: any) => {
     socket.broadcast.emit('newEvent', data);
+  });
+  socket.on("taskCompleted", (data: any) => {
+    socket.broadcast.emit('taskComplete', data);
   })
+  
 });
 
 const middleware = require('./middleware/index');
