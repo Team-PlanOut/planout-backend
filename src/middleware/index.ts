@@ -9,6 +9,7 @@ class Middleware {
       const decodedVal = await admin.auth().verifyIdToken(token);
       if (decodedVal) {
         req.user = decodedVal;
+        console.log(req.user);
         const users = await knex
           .select("id")
           .from("users")
@@ -23,7 +24,7 @@ class Middleware {
             last_name: fullName[fullName.length - 1],
             email: req.user.email,
             id: req.user.uid,
-            photoUrl: req.user.photoURL,
+            photoUrl: req.user.picture,
           };
           await knex.insert(userInfo).into("users");
           return next();
