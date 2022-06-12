@@ -74,14 +74,14 @@ const createUser = (user: Object) => {
   return knex.insert(user).into("users").catch(console.error());
 };
 
-const updateUser = (id: Number, updatedInfo: Object) => {
+const updateUser = (id: string, updatedInfo: Object) => {
   return knex("users")
     .update(updatedInfo)
     .where({ id: id })
     .catch(console.error());
 };
 
-const deleteUser = (id: Number) => {
+const deleteUser = (id: string) => {
   return knex
     .select({
       id: "id",
