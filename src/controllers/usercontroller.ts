@@ -25,7 +25,7 @@ module.exports = {
 
   async getUsersByFirstName(req: Request, res: Response) {
     const firstName = req.params.first_name;
-    const user = await userModel.getUsersByText(firstName);
+    const user = await userModel.getUsersByFirstName(firstName);
     res.send(user);
   },
 
