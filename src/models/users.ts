@@ -11,6 +11,7 @@ const getAllUsers = () => {
       email: "email",
       first_name: "first_name",
       last_name: "last_name",
+      photoUrl: "photoUrl",
       points: "points",
       created_at: "created_at",
       updated_at: "updated_at",
@@ -25,6 +26,7 @@ const getUsersById = (id: Number) => {
       email: "email",
       first_name: "first_name",
       last_name: "last_name",
+      photoUrl: "photoUrl",
       points: "points",
       created_at: "created_at",
       updated_at: "updated_at",
@@ -41,6 +43,7 @@ const getUsersByUserName = (username: String) => {
       email: "email",
       first_name: "first_name",
       last_name: "last_name",
+      photoUrl: "photoUrl",
       points: "points",
       created_at: "created_at",
       updated_at: "updated_at",
@@ -57,6 +60,7 @@ const getUsersByFirstName = (text: String) => {
       email: "email",
       first_name: "first_name",
       last_name: "last_name",
+      photoUrl: "photoUrl",
       points: "points",
       created_at: "created_at",
       updated_at: "updated_at",
@@ -65,24 +69,27 @@ const getUsersByFirstName = (text: String) => {
     .where({ first_name: text })
 }
 
+
+
 const createUser = (user: Object) => {
   return knex.insert(user).into("users").catch(console.error());
 };
 
-const updateUser = (id: Number, updatedInfo: Object) => {
+const updateUser = (id: string, updatedInfo: Object) => {
   return knex("users")
     .update(updatedInfo)
     .where({ id: id })
     .catch(console.error());
 };
 
-const deleteUser = (id: Number) => {
+const deleteUser = (id: string) => {
   return knex
     .select({
       id: "id",
       email: "email",
       first_name: "first_name",
       last_name: "last_name",
+      photoUrl: "photoUrl",
       points: "points",
       created_at: "created_at",
       updated_at: "updated_at",

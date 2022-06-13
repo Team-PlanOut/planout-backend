@@ -65,7 +65,7 @@ const getTasksByEventId = (id: Number) => {
     .where("tasks.event_id", id);
 };
 
-const getTasksByUserId = (id: Number) => {
+const getTasksByUserId = (id: String) => {
   return knex(tasksTable)
     .join("users", "tasks.user_id", "=", "users.id")
     .join("events", "events.id", "=", "tasks.event_id")
@@ -82,8 +82,8 @@ const getTasksByUserId = (id: Number) => {
       createdAt: "tasks.created_at",
       updatedAt: "tasks.updated_at",
     })
-    .where("tasks.user_id", id)
-    .first();
+    .where("tasks.user_id", id);
+  // .first();
 };
 
 const getByTaskName = (taskname: String) => {
@@ -114,7 +114,7 @@ const createTask = (task: Object) => {
 const updateTask = (id: Number, updatedInfo: Object) => {
   return knex("tasks")
     .update(updatedInfo)
-    .where({ id: id })
+    .where("id", id)
     .catch(console.error());
 };
 
@@ -123,7 +123,7 @@ const updateTaskUser = (id: Number, updatedInfo: Object) => {
     .update(updatedInfo)
     .where({ id: id })
     .catch(console.error());
-}; //do we need this? need what?
+};
 
 const deleteTask = (id: Number) => {
   return knex(tasksTable).select("*").where({ id: id }).del();

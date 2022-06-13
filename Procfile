@@ -1,2 +1,2 @@
-release: npx knex migrate:latest && npx knex seed:run
+release: npx knex migrate:latest
 web: yarn start
