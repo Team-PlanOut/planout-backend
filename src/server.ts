@@ -26,7 +26,7 @@ io.on('connection', (socket: any) => {
   socket.on("taskCompleted", (data: any) => {
     socket.broadcast.emit('taskComplete', data);
   })
-  
+
 });
 
 const middleware = require('./middleware/index');
@@ -62,5 +62,5 @@ app.use('/friends', friendRoutes);
 // });
 
 server.listen(PORT, () => {
-  console.log(`Your server is single and ready to mingle at port ${PORT}`);
+  console.log(`Your server is single and ready to mingle in port ${PORT}`);
 });

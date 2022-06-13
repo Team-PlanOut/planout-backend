@@ -90,7 +90,7 @@ const getEventByTaskId = () => {
     taskId: "tasks.id",
     taskDescription: "tasks.description",
     eventName: "events.event_name",
-  }).from("tasks").leftJoin("events", "task.events_id", "events.id").where("user.id", "=", "tasks.user_id");
+  }).from("tasks").leftJoin("events", "tasks.event_id", "events.id").where("users.id", "=", "tasks.user_id");
 }
 
 const createEvent = (event: Object) => {
