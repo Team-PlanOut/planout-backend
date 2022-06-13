@@ -67,8 +67,9 @@ const getUsersByFirstName = (text: String) => {
     })
     .from(usersTable)
     .where({ first_name: text })
-    .first();
-};
+}
+
+
 
 const createUser = (user: Object) => {
   return knex.insert(user).into("users").catch(console.error());
