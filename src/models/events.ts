@@ -1,4 +1,4 @@
-export {};
+export { };
 let knex = require("../knex");
 
 const eventsTable = "events";
@@ -85,6 +85,14 @@ const getByHostId = (host: Number) => {
   );
 };
 
+const getEventByTaskId = () => {
+  return knex.select({
+    taskId: "tasks.id",
+    taskDescription: "tasks.description",
+    eventName: "events.event_name",
+  }).from("tasks").leftJoin("events", "task.events_id", "events.id").where("user.id", "=", "tasks.user_id");
+}
+
 const createEvent = (event: Object) => {
   return knex.insert(event).into("events").catch(console.error());
 };
@@ -97,7 +105,12 @@ const updateEvent = (id: Number, updatedInfo: Object) => {
 };
 
 const deleteEvent = (id: Number) => {
-  return knex("events").where("id", id).del();
+
+  return (
+    knex("events")
+      .where("id", id)
+      .del()
+  );
 };
 
 module.exports = {
@@ -105,6 +118,7 @@ module.exports = {
   getEventById,
   getByEventName,
   getByHostId,
+  getEventByTaskId,
   createEvent,
   updateEvent,
   deleteEvent,
