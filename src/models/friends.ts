@@ -4,14 +4,15 @@ let knex = require("../knex");
 const friendsTable = "friends";
 
 const getAllFriends = (id: string) => {
-  return knex("friends")  
-    .join('users', 'friends.user2_id', '=', 'users.id')
+  return knex("friends")
+    .join("users", "friends.user2_id", "=", "users.id")
     .select({
       friendId: "users.id",
       friendFirstName: "users.first_name",
       friendLastName: "users.last_name",
       username: "users.username",
-      email: "users.email"
+      email: "users.email",
+      photoUrl: "users.photoUrl",
     })
     .where("friends.user1_id", id);
 };
@@ -23,7 +24,7 @@ const addFriend = (newFriend: Object) => {
 const endFriendship = (id: string, friendId: string) => {
   return knex(friendsTable)
     .select("*")
-    .where({ user1_id: id, user2_id: friendId})
+    .where({ user1_id: id, user2_id: friendId })
     .del();
 };
 
