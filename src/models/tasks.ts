@@ -75,6 +75,7 @@ const getTasksByUserId = (id: String) => {
       status: "tasks.status",
       points: "tasks.points",
       eventId: "tasks.event_id",
+      eventName: "events.event_name",
       userId: "users.id",
       userFirstName: "users.first_name",
       userLastName: "users.last_name",
@@ -103,7 +104,7 @@ const getByTaskName = (taskname: String) => {
       createdAt: "tasks.created_at",
       updatedAt: "tasks.updated_at",
     })
-    .where("tasks.description", taskname)
+    .where("tasks.description", taskname) 
     .first();
 };
 

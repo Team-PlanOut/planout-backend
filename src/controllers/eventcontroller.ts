@@ -19,12 +19,6 @@ module.exports = {
     res.send(event);
   },
 
-  async getEventByTaskId(req: Request, res: Response) {
-    const taskId = req.params.id;
-    const event = await eventModel.getEventByTaskId(taskId);
-    res.send(event);
-  },
-
   async getEventByHost(req: Request, res: Response) {
     const hostId = req.params.id;
     const event = await eventModel.getByHostId(hostId);
