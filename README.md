@@ -16,17 +16,39 @@
 
 ### Commands for development
 
-- yarn dev - starts express locally
-- yarn build - builds backend into js files and put them into dist directory
-- yarn start - will run those js files in dist
+To start the server locally: 
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+
+Build the backend into js files and put them into dist directory
+
+```bash
+npm run build
+# or
+yarn build
+```
+This will run the js files in dist
+```bash
+npm start
+# or
+yarn start
+```
+
+
 
 To run docker image:
-- install docker desktop and run in
-- in terminal run: docker build . 
-- then run: docker-compose up
+
+- Install docker desktop and run 
+- In your terminal run: `docker build . `
+- Then run: `docker-compose up `
 
 
-In the .env.local file
+In the .env.local file:
 ```
 
 DB_USER=<postgres user>
