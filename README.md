@@ -1,3 +1,17 @@
+## _PlanOut_ 
+
+
+### A Social Task Manager Applicaton for Casual Event Planning
+
+## Built With
+
+ - [NodeJS] (https://nodejs.org/en/docs/)
+ - [Express] (https://expressjs.com/) 
+ - [Knex.js] (http://knexjs.org/)
+ - [Docker] (https://docs.docker.com/)
+ - [PostgreSQL] (https://www.postgresql.org/docs/)
+ 
+
 # Getting started
 
 ### Commands for development
@@ -14,7 +28,19 @@ To run docker image:
 
 In the .env.local file
 ```
+
 DB_USER=<postgres user>
 DB_PASSWORD=<password>
 DB_NAME=planout
+
 ```
+
+
+
+## Authors
+
+- [Jon Gull] (https://github.com/JonrGull)
+- [Konstantin Shambazov] (https://github.com/Constantine7s)
+- [Dominic Lowes] (https://github.com/SodaJyu)
+- [Yushiko Salvador] (https://github.com/yushisalvador)
+- [Juli Boucree] (https://github.com/juliwithoutthee)
