@@ -1,7 +1,7 @@
 ## _PlanOut_ 
 
 
-### A Social Task Manager Applicaton for Casual Event Planning
+### A Social Task Manager Application for Casual Event Planning
 
 ## Built With
 
