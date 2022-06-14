@@ -11,7 +11,7 @@ module.exports = {
   async getUsersById(req: Request, res: Response) {
     const id = req.params.id;
     let specifiedUser = await userModel.getUsersById(id);
-    if (specifiedUser === undefined){
+    if (specifiedUser === undefined) {
       specifiedUser = await userModel.getUsersByFirstName(id);
     }
     res.send(specifiedUser);
@@ -23,15 +23,23 @@ module.exports = {
     res.send(user);
   },
 
-  async getUsersByFirstName(req: Request, res: Response){
+  async getUsersByFirstName(req: Request, res: Response) {
     const firstName = req.params.first_name;
-    const user = await userModel.getUsersByText(firstName);
+    const user = await userModel.getUsersByFirstName(firstName);
     res.send(user);
   },
 
   async saveUser(req: Request, res: Response) {
-    const { id, email, first_name, last_name, points, created_at, updated_at } =
-      req.body;
+    const {
+      id,
+      email,
+      first_name,
+      last_name,
+      points,
+      created_at,
+      updated_at,
+      photoUrl,
+    } = req.body;
 
     const userObj = {
       id: id,
@@ -39,6 +47,7 @@ module.exports = {
       first_name: first_name,
       last_name: last_name,
       points: points,
+      photoUrl: photoUrl,
       created_at: created_at,
       updated_at: updated_at,
     };

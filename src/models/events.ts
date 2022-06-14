@@ -1,4 +1,4 @@
-export {};
+export { };
 let knex = require("../knex");
 
 const eventsTable = "events";
@@ -11,6 +11,7 @@ const getAllEvents = () => {
     date: "events.date",
     budget: "events.budget",
     hostId: "users.id",
+    hostPhoto: "users.photoUrl",
     hostFirstName: "users.first_name",
     hostLastName: "users.last_name",
     created_at: "events.created_at",
@@ -28,6 +29,7 @@ const getEventById = (id: Number) => {
         date: "events.date",
         budget: "events.budget",
         hostId: "users.id",
+        hostPhoto: "users.photoUrl",
         hostFirstName: "users.first_name",
         hostLastName: "users.last_name",
         created_at: "events.created_at",
@@ -49,6 +51,7 @@ const getByEventName = (eventName: String) => {
         date: "events.date",
         budget: "events.budget",
         hostId: "users.id",
+        hostPhoto: "users.photoUrl",
         hostFirstName: "users.first_name",
         hostLastName: "users.last_name",
         created_at: "events.created_at",
@@ -70,6 +73,7 @@ const getByHostId = (host: Number) => {
         date: "events.date",
         budget: "events.budget",
         hostId: "users.id",
+        hostPhoto: "users.photoUrl",
         hostFirstName: "users.first_name",
         hostLastName: "users.last_name",
         created_at: "events.created_at",
@@ -80,6 +84,7 @@ const getByHostId = (host: Number) => {
       .first()
   );
 };
+
 
 const createEvent = (event: Object) => {
   return knex.insert(event).into("events").catch(console.error());
@@ -93,9 +98,10 @@ const updateEvent = (id: Number, updatedInfo: Object) => {
 };
 
 const deleteEvent = (id: Number) => {
+
   return (
     knex("events")
-      .where( "id", id )
+      .where("id", id)
       .del()
   );
 };
