@@ -25,7 +25,7 @@ yarn dev
 ```
 
 
-Build the backend into js files and put them into dist directory
+Build the backend into js files and put them into the dist directory
 
 ```bash
 npm run build
