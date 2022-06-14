@@ -5,11 +5,11 @@
 
 ## Built With
 
- - [NodeJS] (https://nodejs.org/en/docs/)
- - [Express] (https://expressjs.com/) 
- - [Knex.js] (http://knexjs.org/)
- - [Docker] (https://docs.docker.com/)
- - [PostgreSQL] (https://www.postgresql.org/docs/)
+ - [NodeJS](https://nodejs.org/en/docs/)
+ - [Express](https://expressjs.com/) 
+ - [Knex.js](http://knexjs.org/)
+ - [Docker](https://docs.docker.com/)
+ - [PostgreSQL](https://www.postgresql.org/docs/)
  
 
 # Getting started
@@ -39,8 +39,8 @@ DB_NAME=planout
 
 ## Authors
 
-- [Jon Gull] (https://github.com/JonrGull)
-- [Konstantin Shambazov] (https://github.com/Constantine7s)
-- [Dominic Lowes] (https://github.com/SodaJyu)
-- [Yushiko Salvador] (https://github.com/yushisalvador)
-- [Juli Boucree] (https://github.com/juliwithoutthee)
+- [Jon Gull](https://github.com/JonrGull)
+- [Konstantin Shambazov](https://github.com/Constantine7s)
+- [Dominic Lowes](https://github.com/SodaJyu)
+- [Yushiko Salvador](https://github.com/yushisalvador)
+- [Juli Boucree](https://github.com/juliwithoutthee)
