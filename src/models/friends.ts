@@ -18,7 +18,7 @@ const getAllFriends = (id: string) => {
 };
 
 const addFriend = (newFriend: Object) => {
-  return knex.insert(newFriend).into("friends").catch(console.error());
+  return knex.insert(newFriend).into("friends").catch(console.error);
 };
 
 const endFriendship = (id: string, friendId: string) => {

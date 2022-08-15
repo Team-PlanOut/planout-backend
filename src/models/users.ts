@@ -71,14 +71,11 @@ const getUsersByFirstName = (text: String) => {
 };
 
 const createUser = (user: Object) => {
-  return knex.insert(user).into("users").catch(console.error());
+  return knex.insert(user).into("users").catch(console.error);
 };
 
 const updateUser = (id: string, updatedInfo: Object) => {
-  return knex("users")
-    .update(updatedInfo)
-    .where({ id: id })
-    .catch(console.error());
+  return knex("users").update(updatedInfo).where("id", id).catch(console.error);
 };
 
 const deleteUser = (id: string) => {
@@ -94,7 +91,7 @@ const deleteUser = (id: string) => {
       updated_at: "updated_at",
     })
     .from(usersTable)
-    .where({ id: id })
+    .where("id", id)
     .del();
 };
 
