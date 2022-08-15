@@ -113,17 +113,14 @@ const createTask = (task: Object) => {
 };
 
 const updateTask = (id: Number, updatedInfo: Object) => {
-  return knex("tasks")
-    .update(updatedInfo)
-    .where("id", id)
-    .catch(console.error());
+  return knex("tasks").update(updatedInfo).where("id", id).catch(console.error);
 };
 
 const updateTaskUser = (id: Number, updatedInfo: Object) => {
   return knex("users_tasks")
     .update(updatedInfo)
     .where({ id: id })
-    .catch(console.error());
+    .catch(console.error);
 };
 
 const deleteTask = (id: Number) => {

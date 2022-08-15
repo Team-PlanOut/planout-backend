@@ -51,14 +51,14 @@ const getByUserId = (id: Number) => {
 };
 
 const createEventUser = (eventUser: Object) => {
-  return knex.insert(eventUser).into(usersEventsTable).catch(console.error());
+  return knex.insert(eventUser).into(usersEventsTable).catch(console.error);
 };
 
 const updateEventUser = (id: Number, updatedInfo: Object) => {
   return knex(usersEventsTable)
     .update(updatedInfo)
     .where({ id: id })
-    .catch(console.error());
+    .catch(console.error);
 };
 
 const deleteEventUser = (id: Number) => {
